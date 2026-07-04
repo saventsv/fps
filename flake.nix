@@ -2,7 +2,7 @@
   description = "A flake for a raylib fps project";
 
   inputs = {
-    nixpkgs = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
   };
 
   outputs = { self, nixpkgs }:
