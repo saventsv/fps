@@ -15,20 +15,31 @@ typedef struct {
 } Spatial;
 
 typedef struct {
+  Vector3 position;
+  Vector3 dimensions;
+  float yaw;
+  float pitch;
+} PlayerSpatial;
+
+typedef struct {
   // acceleration decides how much velocity changes
   Vector3 acceleration;
   Vector3 velocity;
 } RigidBody;
 
+typedef struct {
+  Spatial spatial;
+  RigidBody rigidBody;
+} Object;
+
+typedef struct {
+  PlayerSpatial spatial;
+  RigidBody rigidBody;
+} PlayerObject;
+
 typedef struct Player {
   Camera3D camera;
-
-  Vector3 position;
-
-  // for knowing what angles the camera is at
-  float yaw;
-  float pitch;
-
+  PlayerObject object;
   float speed;
 } Player;
 
