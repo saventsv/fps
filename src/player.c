@@ -21,7 +21,6 @@ Player *init_player() {
   return player;
 }
 
-// TODO, there is something here that causes the camera to not work
 void update_player(Player *player) {
 
   float deltaTime = GetFrameTime();
