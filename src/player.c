@@ -13,9 +13,9 @@ Player *init_player() {
     .target = (Vector3){ 0.0f, 2.0f, 4.0f },
     .up = (Vector3){ 0.0f, 1.0f, 0.0f },
   };
-  player->pitch = 0;
-  player->position = (Vector3){ 0.0f, 8.0f, 0.0f };
-  player->yaw = 0;
+  player->object.spatial.pitch = 0;
+  player->object.spatial.position = (Vector3){ 0.0f, 8.0f, 0.0f };
+  player->object.spatial.yaw = 0;
   player->speed = 100;
 
   return player;
@@ -29,15 +29,15 @@ void update_player(Player *player) {
   Vector2 mouse = GetMouseDelta();
   float sensitivity = 0.003f;
 
-  player->pitch -= mouse.y * sensitivity;
-  player->yaw += mouse.x * sensitivity;
+  player->object.spatial.pitch -= mouse.y * sensitivity;
+  player->object.spatial.yaw += mouse.x * sensitivity;
 
-  player->pitch = Clamp(player->pitch, -89.0f, 89.0f);
+  player->object.spatial.pitch = Clamp(player->object.spatial.pitch, -89.0f, 89.0f);
 
   Vector3 forward = (Vector3){
-    .x = cosf(player->yaw) * cosf(player->pitch),
-    .y = sinf(player->pitch),
-    .z = sinf(player->yaw) * cosf(player->pitch),
+    .x = cosf(player->object.spatial.yaw) * cosf(player->object.spatial.pitch),
+    .y = sinf(player->object.spatial.pitch),
+    .z = sinf(player->object.spatial.yaw) * cosf(player->object.spatial.pitch),
   };
 
   forward = Vector3Normalize(forward);
@@ -56,9 +56,9 @@ void update_player(Player *player) {
 
   movement = Vector3Scale(movement, player->speed * deltaTime);
 
-  player->position = Vector3Add(player->position, movement);
+  player->object.spatial.position = Vector3Add(player->object.spatial.position, movement);
 
-  player->camera.position = player->position;
-  player->camera.target = Vector3Add(player->position, forward); 
+  player->camera.position = player->object.spatial.position;
+  player->camera.target = Vector3Add(player->object.spatial.position, forward); 
 
 }
