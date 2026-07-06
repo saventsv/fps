@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+const float GRAVITY = -20.0f;
+
 typedef struct {
   Vector3 position;
   Vector3 rotation;
