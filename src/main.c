@@ -17,21 +17,6 @@ int main(void) {
   while(!WindowShouldClose()) {
     update_player(player);
 
-    printf("Position: %.2f %.2f %.2f\n",
-        player->camera.position.x,
-        player->camera.position.y,
-        player->camera.position.z);
-
-    printf("Target: %.2f %.2f %.2f\n",
-        player->camera.target.x,
-        player->camera.target.y,
-        player->camera.target.z);
-
-    printf("Up: %.2f %.2f %.2f\n",
-        player->camera.up.x,
-        player->camera.up.y,
-        player->camera.up.z);
-
     BeginDrawing();
 
     ClearBackground(WHITE);
