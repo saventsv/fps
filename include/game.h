@@ -23,7 +23,6 @@ typedef struct {
 
 typedef struct {
   // acceleration decides how much velocity changes
-  Vector3 acceleration;
   Vector3 velocity;
 } RigidBody;
 
