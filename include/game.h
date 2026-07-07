@@ -6,11 +6,11 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-const float GRAVITY = -20.0f;
+#define GRAVITY -20.0f
 
 typedef struct {
   Vector3 position;
-  Vector3 rotation;
+  Vector3 rotation; // yaw pitch roll
   Vector3 dimensions;
 } Spatial;
 
